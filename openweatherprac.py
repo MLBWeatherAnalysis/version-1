@@ -41,14 +41,42 @@ coords = {
 }
 
 # for each team, get weather data and put in a file
-for i in range(30):
+# for i in range(30):
+#     # different api keys
+#     # "a222d5de136648b180090abd8642fb3f"
+#     # "b452f10956ec4907bfcfaf1eeb02079c"
+#     #
+#     #
+#     #
+#     for j in range(4, 10):
+#         with open(city[i] + ".json", "a") as outfile:
+#             api_key = "a222d5de136648b180090abd8642fb3f"
+#             lat = coords[city[i]][0]
+#             lon = coords[city[i]][1]
+
+#             start_date = ""
+#             end_date = ""
+
+#             if j == 9: 
+#                 start_date = "2021-09-01"
+#                 end_date = "2021-10-05"
+#             else:
+#                 start_date = "2021-0" + str(j) + "-01"
+#                 end_date = "2021-0" + str(j+1) + "-01"
+            
+#             url = "https://api.weatherbit.io/v2.0/history/hourly?lat=%s&lon=%s&start_date=%s&end_date=%s&tz=local&key=%s&units=I" % (lat, lon, start_date, end_date, api_key)
+#             response = requests.get(url)
+#             data = json.loads(response.text)
+
+#             json.dump(data, outfile)
+for i in range(6, 30):
     # different api keys
     # "a222d5de136648b180090abd8642fb3f"
     # "b452f10956ec4907bfcfaf1eeb02079c"
     #
     #
     #
-    api_key = "b452f10956ec4907bfcfaf1eeb02079c"
+    api_key = "a222d5de136648b180090abd8642fb3f"
     lat = coords[city[i]][0]
     lon = coords[city[i]][1]
     start_date = "2021-04-01"
