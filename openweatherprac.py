@@ -2,11 +2,10 @@ import requests
 import json
 import pandas as pd
 import csv
-import urllib
 
 city = ["ARI", "ATL", "BAL", "BOS", "CHC", "CHW", "CIN", "CLE", "COL", "DET", 
         "HOU", "KCR", "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", "NYY", "OAK", 
-        "PHI", "PIT", "SDP", "SEA", "SFG", "STL", "TBR", "TEX", "TOR", "WAS"]
+        "PHI", "PIT", "SDP", "SEA", "SFG", "STL", "TBR", "TEX", "TOR", "WSN"]
 
 coords = {
     "ARI": [33.445278, -112.066944],
@@ -38,7 +37,7 @@ coords = {
     "TBR": [27.768333, -82.653333],
     "TEX": [32.747361, -97.084167],
     "TOR": [43.641389, -79.389167],
-    "WAS": [38.872778, -77.0075]
+    "WSN": [38.872778, -77.0075]
 }
 
 ''' -- IGNORE -- '''
@@ -73,14 +72,15 @@ coords = {
 #             json.dump(data, outfile)
 ''' -- -- '''
 
-for i in range(29,30):
+'''
+for i in range(19,22):
     # different api keys
     # "a222d5de136648b180090abd8642fb3f"
     # "b452f10956ec4907bfcfaf1eeb02079c"
     # "3acefb75cc7a434e932d4bc8b488ed0a"
     # "b6ceebc5363342c6919a45d80b83f9ba"
     #
-    api_key = "a222d5de136648b180090abd8642fb3f"
+    api_key = "3acefb75cc7a434e932d4bc8b488ed0a"
     lat = coords[city[i]][0]
     lon = coords[city[i]][1]
     start_date = "2021-04-01"
@@ -103,32 +103,33 @@ for i in range(29,30):
 # # for each game, get the appropriate weather data and put in final file
 
 '''
-games = 'filename.csv'
+
+games = 'OPSWeatherData.csv'
 df = pd.read_csv(games)
 
 data_file = open("data_file.csv", "w")
 data_writer = csv.writer(data_file)
 
-days_into_the_season = 0
+hours_into_the_season = 18
 for index, game_day in df.iterrows():
-    game = game_day[0:10]
-    home_team = game_day[11:14]
-    ops = game_day[15:]
+    game = game_day['Game']
+    home_team = game_day['Team']
+    ops = game_day['OPS']
     team_file = home_team + ".json"
-
+    # print(game)
     # find the date/time, pull temp, rain, and wind
-    f = open(team_file, "r")
-    row = f.getline()
-    date = row.data[days_into_the_season].timestamp_local[0:10]
+    f = open(team_file)
+    row = json.load(f)
+    date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
     while date != game:
-        days_into_the_season += 24 # incrementing by hours
-        date = row.data[days_into_the_season].timestamp_local[0:10]
-        
+        hours_into_the_season += 24 # incrementing by hours
+        date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
+
     if date == game:
         # get temp, rain, wind
-        temp = row.data[days_into_the_season].temp
-        rain = row.data[days_into_the_season].precip
-        wind = row.data[days_into_the_season].wind_spd
+        temp = row['data'][hours_into_the_season]['temp']
+        rain = row['data'][hours_into_the_season]['precip']
+        wind = row['data'][hours_into_the_season]['wind_spd']
 
         # put this data into the final file with ops
         data = [ops, temp, rain, wind]
@@ -137,7 +138,7 @@ for index, game_day in df.iterrows():
     f.close()
 
 data_file.close()
-'''
+
 # open file associated with home_team
 # find appropriate date and time (whatever we end up choosing) in that file
 # pull temp, rain, and wind
