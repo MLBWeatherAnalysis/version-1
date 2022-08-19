@@ -73,36 +73,36 @@ coords = {
 #             json.dump(data, outfile)
 ''' -- -- '''
 
-# for i in range(30):
-#     # different api keys
-#     # "a222d5de136648b180090abd8642fb3f"
-#     # "b452f10956ec4907bfcfaf1eeb02079c"
-#     # "3acefb75cc7a434e932d4bc8b488ed0a"
-#     # "b6ceebc5363342c6919a45d80b83f9ba"
-#     #
-#     api_key = "b6ceebc5363342c6919a45d80b83f9ba"
-#     lat = coords[city[i]][0]
-#     lon = coords[city[i]][1]
-#     start_date = "2021-04-01"
-#     end_date = "2021-10-04"
-#     url = "https://api.weatherbit.io/v2.0/history/hourly?lat=%s&lon=%s&start_date=%s&end_date=%s&tz=local&key=%s&units=I" % (lat, lon, start_date, end_date, api_key)
-#     response = requests.get(url)
-#     if response == None or response == '':
-#         print("Null or empty string value for data in file")
-#     else:
-#         data = json.loads(response.text)
-#     with open(city[i] + ".json", "w") as outfile:
-#         json.dump(data, outfile)
-#     # response = urllib.request.urlopen(url)
-#     # data = response.read()
-#     # js = json.loads(data.decode("utf-8"))
+for i in range(29,30):
+    # different api keys
+    # "a222d5de136648b180090abd8642fb3f"
+    # "b452f10956ec4907bfcfaf1eeb02079c"
+    # "3acefb75cc7a434e932d4bc8b488ed0a"
+    # "b6ceebc5363342c6919a45d80b83f9ba"
+    #
+    api_key = "a222d5de136648b180090abd8642fb3f"
+    lat = coords[city[i]][0]
+    lon = coords[city[i]][1]
+    start_date = "2021-04-01"
+    end_date = "2021-10-04"
+    url = "https://api.weatherbit.io/v2.0/history/hourly?lat=%s&lon=%s&start_date=%s&end_date=%s&tz=local&key=%s&units=I" % (lat, lon, start_date, end_date, api_key)
+    response = requests.get(url)
+    if response == None or response == '':
+        print("Null or empty string value for data in file")
+    else:
+        data = json.loads(response.text)
+    with open(city[i] + ".json", "w") as outfile:
+        json.dump(data, outfile)
+    # response = urllib.request.urlopen(url)
+    # data = response.read()
+    # js = json.loads(data.decode("utf-8"))
     
-#     # with open(city[i] + ".json", "w") as outfile:
-#     #     json.dump(js, outfile)
+    # with open(city[i] + ".json", "w") as outfile:
+    #     json.dump(js, outfile)
 
 # # for each game, get the appropriate weather data and put in final file
 
-
+'''
 games = 'filename.csv'
 df = pd.read_csv(games)
 
@@ -137,7 +137,7 @@ for index, game_day in df.iterrows():
     f.close()
 
 data_file.close()
-
+'''
 # open file associated with home_team
 # find appropriate date and time (whatever we end up choosing) in that file
 # pull temp, rain, and wind
