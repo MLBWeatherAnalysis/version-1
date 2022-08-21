@@ -72,7 +72,6 @@ coords = {
 #             json.dump(data, outfile)
 ''' -- -- '''
 
-'''
 for i in range(19,22):
     # different api keys
     # "a222d5de136648b180090abd8642fb3f"
@@ -102,44 +101,13 @@ for i in range(19,22):
 
 # # for each game, get the appropriate weather data and put in final file
 
-'''
-
-games = 'OPSWeatherData.csv'
-df = pd.read_csv(games)
-
-data_file = open("data_file.csv", "w")
-data_writer = csv.writer(data_file)
-
-hours_into_the_season = 18
-for index, game_day in df.iterrows():
-    game = game_day['Game']
-    home_team = game_day['Team']
-    ops = game_day['OPS']
-    team_file = home_team + ".json"
-    # print(game)
-    # find the date/time, pull temp, rain, and wind
-    f = open(team_file)
-    row = json.load(f)
-    date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
-    while date != game:
-        hours_into_the_season += 24 # incrementing by hours
-        date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
-
-    if date == game:
-        # get temp, rain, wind
-        temp = row['data'][hours_into_the_season]['temp']
-        rain = row['data'][hours_into_the_season]['precip']
-        wind = row['data'][hours_into_the_season]['wind_spd']
-
-        # put this data into the final file with ops
-        data = [ops, temp, rain, wind]
-        data_writer.writerow(data)
-
-    f.close()
-
-data_file.close()
 
 # open file associated with home_team
 # find appropriate date and time (whatever we end up choosing) in that file
 # pull temp, rain, and wind
 # put in final data file
+
+
+# We were examining precip and found out its measured in mm
+# were concerning about dome stadiums affecting conditions
+# Can move on to next steps of Ken Jee's videos actually doing something relevant to ds now
