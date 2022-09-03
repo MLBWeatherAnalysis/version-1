@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("data_file2.csv")
+df = pd.read_csv("data_file3.csv")
 
 df.columns
 df_model = ['OPS', 'temp','precip','wind_spd']

@@ -43,7 +43,7 @@ coords = {
 games = 'OPSWeatherData.csv'
 df = pd.read_csv(games)
 
-data_file = open("data_file2.csv", "w")
+data_file = open("data_file3.csv", "w")
 data_writer = csv.writer(data_file)
 
 hours_into_the_season = 18
@@ -66,9 +66,14 @@ for index, game_day in df.iterrows():
         temp = row['data'][hours_into_the_season]['temp']
         rain = round(60 * 0.0393701 * float(row['data'][hours_into_the_season]['precip']), 6) # converted from mm/min to in/hr
         wind = round(2.23694 * float(row['data'][hours_into_the_season]['wind_spd']), 6) # converted from m/s to mph
+        humidity = row['data'][hours_into_the_season]['rh'] # as in 32%
+        pressure = row['data'][hours_into_the_season]['pres']
+        cloud = row['data'][hours_into_the_season]['clouds']
+        visibility = row['data'][hours_into_the_season]['vis']
+        uv = row['data'][hours_into_the_season]['uv']
 
         # put this data into the final file with ops
-        data = [ops, temp, rain, wind]
+        data = [ops, temp, rain, wind, humidity, pressure, cloud, visibility, uv]
         data_writer.writerow(data)
 
     f.close()
