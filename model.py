@@ -59,6 +59,4 @@ from sklearn.ensemble import RandomForestRegressor
 rf = RandomForestRegressor()
 
 print(np.mean(cross_val_score(rf,X_train,y_train, scoring = 'neg_mean_absolute_error')))
-# returns -.82 with just ops, temp, precip, wind, 
 # returns -0.2000219056 with all variables but visibility which has incorrect values from weatherbit
-# 26 ish min but have no idea what's going on above or really just at all
