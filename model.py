@@ -46,6 +46,7 @@ for i in range(1,100):
     error.append(np.mean(cross_val_score(lml,X_train,y_train, scoring = 'neg_mean_absolute_error')))
 
 plt.plot(alpha, error)
+plt.show()
 
 err = tuple(zip(alpha, error))
 df_err = pd.DataFrame(err, columns = ['alpha', 'error'])
