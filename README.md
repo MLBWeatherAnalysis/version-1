@@ -8,6 +8,7 @@ We were curious to understand the impact of various weather conditions on OPS (O
 ```
 We would like to thank Ken Jee for his instructional resources online here:
 https://www.youtube.com/c/KenJee1
+
 In addition, we would like to recognize Fangraphs.com for their freely available sets of data
 which we could not have done the project without:
 https://www.fangraphs.com/
