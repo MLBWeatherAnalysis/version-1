@@ -2,13 +2,8 @@
 ### Brian Ozawa Burns, Nicholas Elich
 Jul 2022
 
-We were curious to understand the impact of various weather conditions on OPS (On Base plus Slugging
-Percentage) in the Major League Baseball season of 2021. To do this, we pulled data from Weatherbit.io at the 30
-ballpark locations across the United States. From there, we compiled a data file containing OPS, Temperature,
-Precipation, Wind Speed, Humidity, Pressure, Cloud Coverage, and UV (a less likely influence on OPS). Using this
-data, we constructed three models (Multiple Linear Regression, Lasso Regression, and Random Forest) which
-outputted an R^2 value of 0.005 with error values of about 0.2. Based on these results, we conclude that the
-weather conditions tested did not impact the game significantly.
+We were curious to understand the impact of various weather conditions on OPS (On Base Percentage plus Slugging Percentage) in the Major League Baseball season of 2021. To do this, we pulled data from Weatherbit.io at the 30 ballpark locations across the United States and Canada. From there, we compiled a data file containing OPS, Temperature, Precipitation, Wind Speed, Humidity, Pressure, Cloud Coverage, and UV (a less likely influence on OPS). Using this data, we constructed three models - a Multiple Linear Regression, Lasso Regression, and Random Forest - which all outputted error values of about 0.2. Based on our findings, we concluded that most weather conditions tested had little to no impact on OPS in the 2021 MLB season. The one variable that did, however, was temperature which, according to our Multiple Linear Regression model, had a t-statistic of 1.973 and a corresponding p-value of 
+0.049. Using a significance level of 0.05, we were able to conclude that temperature had an effect on OPS in the 2021 MLB season.
 
 ```
 We would like to thank Ken Jee for his instructional resources online here:

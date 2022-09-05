@@ -52,8 +52,7 @@ for index, game_day in df.iterrows():
     home_team = game_day['Team']
     ops = game_day['OPS']
     team_file = home_team + ".json"
-    # print(game)
-    # find the date/time, pull temp, rain, and wind
+    # find the date/time, pull weather variables
     f = open(team_file)
     row = json.load(f)
     date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
@@ -62,7 +61,7 @@ for index, game_day in df.iterrows():
         date = row['data'][hours_into_the_season]['timestamp_local'][0:10]
 
     if date == game:
-        # get temp, rain, wind
+        # get temp, rain, wind, humidity, pressure, cloud coverage, visibility, and uv rating
         temp = row['data'][hours_into_the_season]['temp']
         rain = round(60 * 0.0393701 * float(row['data'][hours_into_the_season]['precip']), 6) # converted from mm/min to in/hr
         wind = round(2.23694 * float(row['data'][hours_into_the_season]['wind_spd']), 6) # converted from m/s to mph

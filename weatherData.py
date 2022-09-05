@@ -102,12 +102,8 @@ for i in range(19,22):
 # # for each game, get the appropriate weather data and put in final file
 
 
+# Process: 
 # open file associated with home_team
-# find appropriate date and time (whatever we end up choosing) in that file
-# pull temp, rain, and wind
-# put in final data file
-
-
-# We were examining precip and found out its measured in mm
-# were concerning about dome stadiums affecting conditions
-# Can move on to next steps of Ken Jee's videos actually doing something relevant to ds now
+# find appropriate date and time in that file
+# pull weather variables
+# put in new, final data file
